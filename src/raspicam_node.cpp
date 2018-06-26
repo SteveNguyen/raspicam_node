@@ -282,7 +282,7 @@ static void encoder_buffer_callback(MMAL_PORT_T *port,
 
   if(current_cam_id != cam_id)
   {
-    ivmech_change_cam(cam_id);
+    ivmech_change_camera(cam_id);
     current_cam_id=cam_id;
   }  
   
@@ -752,7 +752,7 @@ int init_cam(RASPIVID_STATE *state) {
       return 1;
     }
     state->isInit = 1;
-    ivmech_init(); //init the MUX
+    
   }
   return 0;
 }
@@ -917,6 +917,7 @@ int main(int argc, char **argv) {
 
   camera_info_manager::CameraInfoManager c_info_man(n, camera_name,
                                                     camera_info_url);
+  ivmech_init(); //init the MUX
   // get_status(&state_srv);
   init_cam(&state_srv);  // will need to figure out how to handle start and
   // stop with dynamic reconfigure

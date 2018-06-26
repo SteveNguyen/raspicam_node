@@ -22,6 +22,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "ivmech.h"
+
 static bool cam_pins[4][3]={
   {false, false, true}, //Cam 1 = EPIN=0 F1PIN=0 F2PIN=1
   {true, false, true},

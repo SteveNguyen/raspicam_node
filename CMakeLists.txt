@@ -39,6 +39,12 @@ if(${CMAKE_SYSTEM_PROCESSOR} MATCHES arm*)
       MESSAGE(FATAL_ERROR "Could not find vchostif library")
   ENDIF()
 
+  FIND_LIBRARY(wiringPi_LIBS NAMES wiringPi PATHS /usr/lib)
+  IF( (NOT wiringPi_LIBS ))
+      MESSAGE(FATAL_ERROR "Could not find wiringPi library")
+  ENDIF()
+
+  
   set(RPI_LIBRARIES ${RPI_LIBRARIES} 
   ${bcmhost_LIBS}
   ${vcos_LIBS} 
@@ -46,7 +52,8 @@ if(${CMAKE_SYSTEM_PROCESSOR} MATCHES arm*)
   ${mmalcore_LIBS} 
   ${mmalutil_LIBS}  
   ${mmalvcclient_LIBS} 
-  ${vchostif_LIBS} 
+  ${vchostif_LIBS}
+  ${wiringPi_LIBS}
   )
 ENDIF()
 

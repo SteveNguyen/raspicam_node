@@ -85,6 +85,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
  */
 
+
+#include "interface/mmal/mmal.h"
+#include "interface/mmal/mmal_logging.h"
+#include "interface/mmal/util/mmal_default_components.h"
+#include "interface/mmal/util/mmal_util.h"
+#include "interface/mmal/util/mmal_util_params.h"
+#include "interface/vmcs_host/vc_vchi_gencmd.h"
+
 // There isn't actually a MMAL structure for the following, so make one
 typedef struct {
     int enable;  /// Turn colourFX on or off
