@@ -125,7 +125,7 @@ add_library(raspicamcontrol STATIC
 )
 
 ## Declare a cpp executable
-add_executable(raspicam_node src/raspicam_node.cpp)
+add_executable(raspicam_node src/raspicam_node.cpp src/ivmech.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
