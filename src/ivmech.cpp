@@ -21,6 +21,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 #include "ivmech.h"
 
@@ -49,17 +50,20 @@ void ivmech_init()
     return;
   }
   wiringPiI2CWriteReg8 (i2cdevice, I2C_REG, I2C_BUS0) ;
+  usleep(50000);
 }
 
-void ivmech_change_camera(int cam_id)
-{
-  if(cam_id>=0 && cam_id<4)
+    void ivmech_change_camera(int cam_id)
   {
-    wiringPiI2CWriteReg8 (i2cdevice, I2C_REG, cam_bus[cam_id-1]);    
-    digitalWrite (WIRINGPI_EPIN, cam_pins[cam_id-1][0]);
-    digitalWrite (WIRINGPI_F1PIN, cam_pins[cam_id-1][1]);
-    digitalWrite (WIRINGPI_F2PIN, cam_pins[cam_id-1][2]); 
+    if(cam_id>=0 && cam_id<4)
+    {
+      wiringPiI2CWriteReg8 (i2cdevice, I2C_REG, cam_bus[cam_id-1]);
+      usleep(50000);
+      digitalWrite (WIRINGPI_EPIN, cam_pins[cam_id-1][0]);
+      digitalWrite (WIRINGPI_F1PIN, cam_pins[cam_id-1][1]);
+      digitalWrite (WIRINGPI_F2PIN, cam_pins[cam_id-1][2]);
+      printf("I2C DEBUG id:%d bus:%d %d:%d %d:%d %d:%d\n",cam_id, cam_bus[cam_id-1],WIRINGPI_EPIN,cam_pins[cam_id-1][0],WIRINGPI_F1PIN,cam_pins[cam_id-1][1],WIRINGPI_F2PIN,cam_pins[cam_id-1][2]);
+    }
+    else
+      printf("cam_id out of range (%d)\n",cam_id);
   }
-  else
-    printf("cam_id out of range (%d)\n",cam_id);
-}
