@@ -732,9 +732,6 @@ int init_cam(RASPIVID_STATE *state) {
     callback_data_enc->abort = 0;
     callback_data_enc->id = 0;
     callback_data_enc->frame = 0;
-
-    current_cam_id=1;
-    cam_id=1;
     
     encoder_output_port->userdata =
       (struct MMAL_PORT_USERDATA_T *)callback_data_enc;
