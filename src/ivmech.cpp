@@ -42,7 +42,12 @@ void ivmech_init()
   pinMode (WIRINGPI_F1PIN, OUTPUT) ;
   pinMode (WIRINGPI_F2PIN, OUTPUT) ;
 
-  i2cdevice=wiringPiI2CSetup (1); //using /dev/i2c-1 (port I2C1)
+  i2cdevice=wiringPiI2CSetup (0x70); //using /dev/i2c-1 (port I2C1)
+  if(i2cdevice==-1)
+  {
+    printf("ERROR openning i2c device\n");
+    return;
+  }
   wiringPiI2CWriteReg8 (i2cdevice, I2C_REG, I2C_BUS0) ;
 }
 
