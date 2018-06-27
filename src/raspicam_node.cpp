@@ -733,8 +733,8 @@ int init_cam(RASPIVID_STATE *state) {
     callback_data_enc->id = 0;
     callback_data_enc->frame = 0;
 
-    current_cam_id=0;
-    cam_id=0;
+    current_cam_id=1;
+    cam_id=1;
     
     encoder_output_port->userdata =
       (struct MMAL_PORT_USERDATA_T *)callback_data_enc;
@@ -924,6 +924,10 @@ int main(int argc, char **argv) {
   camera_info_manager::CameraInfoManager c_info_man(n, camera_name,
                                                     camera_info_url);
   ivmech_init(); //init the MUX
+  ivmech_change_camera(1);
+  cam_id=1;
+  current_cam_id=cam_id;
+
   // get_status(&state_srv);
   init_cam(&state_srv);  // will need to figure out how to handle start and
   // stop with dynamic reconfigure
