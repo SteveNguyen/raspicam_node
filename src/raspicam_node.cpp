@@ -898,7 +898,7 @@ void reconfigure_callback(raspicam_node::CameraConfig &config, uint32_t level) {
     init_cam(&state_srv);
     start_capture(&state_srv);
   }
-  printf("DEBUG current_cam=%d cam=%d\n",current_cam_id,cam_id);
+  // printf("DEBUG current_cam=%d cam=%d\n",current_cam_id,cam_id);
 
 
   

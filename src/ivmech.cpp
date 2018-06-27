@@ -62,7 +62,7 @@ void ivmech_change_camera(int cam_id)
     digitalWrite (WIRINGPI_EPIN, cam_pins[cam_id-1][0]);
     digitalWrite (WIRINGPI_F1PIN, cam_pins[cam_id-1][1]);
     digitalWrite (WIRINGPI_F2PIN, cam_pins[cam_id-1][2]);
-    printf("I2C DEBUG id:%d bus:%d %d:%d %d:%d %d:%d\n",cam_id, cam_bus[cam_id-1],WIRINGPI_EPIN,cam_pins[cam_id-1][0],WIRINGPI_F1PIN,cam_pins[cam_id-1][1],WIRINGPI_F2PIN,cam_pins[cam_id-1][2]);
+    // printf("I2C DEBUG id:%d bus:%d %d:%d %d:%d %d:%d\n",cam_id, cam_bus[cam_id-1],WIRINGPI_EPIN,cam_pins[cam_id-1][0],WIRINGPI_F1PIN,cam_pins[cam_id-1][1],WIRINGPI_F2PIN,cam_pins[cam_id-1][2]);
   }
   else
     printf("cam_id out of range (%d)\n",cam_id);
