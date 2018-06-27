@@ -279,12 +279,6 @@ static void encoder_buffer_callback(MMAL_PORT_T *port,
   int complete = 0;
 
   // We pass our file handle and other stuff in via the userdata field.
-
-  if(current_cam_id != cam_id)
-  {
-    ivmech_change_camera(cam_id);
-    current_cam_id=cam_id;
-  }  
   
   
   PORT_USERDATA *pData = (PORT_USERDATA *)port->userdata;
@@ -897,6 +891,17 @@ void reconfigure_callback(raspicam_node::CameraConfig &config, uint32_t level) {
 
 
   cam_id=config.cam_id;
+
+
+  if(current_cam_id != cam_id)
+  {
+    close_cam(&state_srv);
+    ivmech_change_camera(cam_id);
+    current_cam_id=cam_id;
+    init_cam(&state_srv);
+  }  
+
+
   
   ROS_INFO("Reconfigure done");
 }
