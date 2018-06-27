@@ -55,7 +55,7 @@ void ivmech_init()
 
     void ivmech_change_camera(int cam_id)
   {
-    if(cam_id>=0 && cam_id<4)
+    if(cam_id>0 && cam_id<=4)
     {
       wiringPiI2CWriteReg8 (i2cdevice, I2C_REG, cam_bus[cam_id-1]);
       usleep(50000);
