@@ -899,6 +899,7 @@ void reconfigure_callback(raspicam_node::CameraConfig &config, uint32_t level) {
     ivmech_change_camera(cam_id);
     current_cam_id=cam_id;
     init_cam(&state_srv);
+    start_capture(&state_srv);
   }  
 
 
